@@ -23,21 +23,21 @@ export default function Navbar() {
     >
       <div
         className={`mx-auto flex max-w-7xl items-center justify-between px-6 transition-all duration-300 ${
-          scrolled ? "h-14" : "h-16"
+          scrolled ? "h-18" : "h-20"
         }`}
       >
         {/* Logo */}
         <Link href="/" className="flex flex-col leading-none">
-          <span className="text-xl font-bold tracking-[0.2em] text-primary">
+          <span className="text-2xl font-bold tracking-[0.2em] text-primary">
             SEMEDA
           </span>
-          <span className="text-[10px] uppercase tracking-[0.35em] text-accent">
+          <span className="text-[20px] uppercase tracking-[0.35em] text-accent">
             Trading PLC
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+        <nav className="hidden md:flex items-center gap-8 text-xl font-bold">
           {["Home", "About", "Sectors", "Contact"].map((label) => (
             <Link
               key={label}

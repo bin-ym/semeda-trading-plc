@@ -1,0 +1,19 @@
+"use client";
+
+import Navbar from "@/components/layout/navbar";
+import Footer from "@/components/layout/footer";
+import SectorsGrid from "@/components/sections/sectors-grid";
+
+export default function SectorsPage() {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+
+      <main className="flex-grow pt-28 pb-20">
+        <SectorsGrid />
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

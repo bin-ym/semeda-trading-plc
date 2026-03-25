@@ -16,8 +16,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SEMEDA Trading PLC",
-  description: "SEMEDA Trading PLC is a leading trading company specializing in the import and export of a wide range of products. With a strong commitment to quality and customer satisfaction, we have established ourselves as a trusted partner in the global market. Our extensive network of suppliers and customers allows us to provide efficient and reliable trading solutions, ensuring that our clients receive the best products at competitive prices. At SEMEDA Trading PLC, we pride ourselves on our professionalism, integrity, and dedication to excellence in every aspect of our business.",
+  title: {
+    default: "Semeda Trading PLC",
+    template: "%s | Semeda Trading PLC",
+  },
+  description:
+    "Semeda Trading PLC operates in floriculture development, mining, import and export. Based in Addis Ababa, Ethiopia.",
+  keywords: [
+    "Ethiopia trading company",
+    "floriculture Ethiopia",
+    "mining Ethiopia",
+    "import export Addis Ababa",
+  ],
 };
 
 export default function RootLayout({

@@ -29,8 +29,33 @@ export default function Hero() {
           className="text-4xl font-bold leading-tight md:text-6xl"
         >
           Driving Growth Across{" "}
-          <span className="text-accent">
-            Floriculture, Mining & Global Trade
+          <span className="inline-block mt-2 md:mt-4">
+            <motion.span 
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-floriculture inline-block"
+            >
+              Floriculture
+            </motion.span>
+            <span className="text-foreground">, </span>
+            <motion.span 
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.8, delay: 0.9 }}
+              className="text-mining inline-block"
+            >
+              Mining
+            </motion.span>
+            <span className="text-foreground"> & </span>
+            <motion.span 
+              initial={{ opacity: 0, filter: "blur(10px)" }}
+              animate={{ opacity: 1, filter: "blur(0px)" }}
+              transition={{ duration: 0.8, delay: 1.3 }}
+              className="text-corporate inline-block"
+            >
+              Global Trade
+            </motion.span>
           </span>
         </motion.h1>
 

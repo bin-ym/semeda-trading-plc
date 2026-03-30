@@ -13,24 +13,36 @@ const sectors = [
     slug: "floriculture",
     image: "/images/floriculture.jpg",
     description: "Sustainable flower cultivation and export.",
+    colorClass: "hover:border-floriculture hover:shadow-floriculture/20 border-2",
+    textClass: "group-hover:text-floriculture",
+    buttonClass: "group-hover:bg-floriculture text-white",
   },
   {
     title: "Mining",
     slug: "mining",
     image: "/images/mining.jpg",
     description: "Responsible mineral extraction and development.",
+    colorClass: "hover:border-mining hover:shadow-mining/20 border-2",
+    textClass: "group-hover:text-mining",
+    buttonClass: "group-hover:bg-mining text-white",
   },
   {
     title: "Import",
     slug: "import",
     image: "/images/import.jpg",
     description: "Global sourcing and logistics solutions.",
+    colorClass: "hover:border-corporate hover:shadow-corporate/20 border-2",
+    textClass: "group-hover:text-corporate",
+    buttonClass: "group-hover:bg-corporate text-white",
   },
   {
     title: "Export",
     slug: "export",
     image: "/images/export.jpg",
     description: "Delivering Ethiopian products worldwide.",
+    colorClass: "hover:border-corporate hover:shadow-corporate/20 border-2",
+    textClass: "group-hover:text-corporate",
+    buttonClass: "group-hover:bg-corporate text-white",
   },
 ];
 
@@ -75,19 +87,20 @@ export default function SectorsGrid({
                 href={`/sectors/${sector.slug}`}
                 className="block group h-full"
               >
-                <Card className="overflow-hidden h-full flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-border">
+                <Card className={`overflow-hidden h-full flex flex-col transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 border-transparent ${sector.colorClass}`}>
                   <div className="relative h-52">
                     <Image
                       src={sector.image}
                       alt={sector.title}
                       fill
+                      priority={i < 2}
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
 
                   <CardContent className="p-7 flex flex-col flex-1">
-                    <h3 className="font-semibold text-xl mb-3 tracking-tight">
+                    <h3 className={`font-semibold text-xl mb-3 tracking-tight transition-colors duration-300 ${sector.textClass}`}>
                       {sector.title}
                     </h3>
 
@@ -98,7 +111,7 @@ export default function SectorsGrid({
                     <Button
                       asChild
                       variant="default"
-                      className="mt-8 w-full group-hover:bg-primary/90"
+                      className={`mt-8 w-full transition-colors duration-300 ${sector.buttonClass}`}
                     >
                       <Link href={`/sectors/${sector.slug}`}>
                         Read More

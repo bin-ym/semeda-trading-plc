@@ -1,6 +1,7 @@
 // components/layout/footer.tsx
 import Link from "next/link";
 import { ReactNode } from "react";
+import { Send } from "lucide-react";
 
 // Types
 interface FooterLink {
@@ -45,12 +46,12 @@ const CONTACT_INFO: ContactInfo[] = [
 
 // Sub-components
 const BrandSection = () => (
-  <div className="md:col-span-5">
+  <div>
     <div className="flex flex-col">
-      <span className="text-3xl font-bold tracking-tight text-primary">
+      <span className="text-3xl font-bold tracking-tight text-floriculture drop-shadow-sm">
         SEMEDA
       </span>
-      <span className="text-xs uppercase tracking-[3px] text-accent mt-1">
+      <span className="text-xs uppercase tracking-[3px] text-mining mt-1 font-semibold">
         Trading PLC
       </span>
     </div>
@@ -60,23 +61,49 @@ const BrandSection = () => (
       responsible mining, and reliable international trade.
     </p>
 
-    <div className="mt-8 text-sm text-muted-foreground">
-      Addis Ababa, Bole
-      <br />
-      Ethiopia
+    {/* Social Links */}
+    <div className="mt-6 flex items-center gap-3">
+      <a
+        href="#"
+        aria-label="Telegram"
+        className="group w-10 h-10 rounded-xl bg-floriculture/15 border border-floriculture/30 flex items-center justify-center text-floriculture hover:bg-floriculture hover:text-white transition-all duration-300"
+      >
+        <Send className="w-4 h-4" />
+      </a>
+      <a
+        href="#"
+        aria-label="Instagram"
+        className="group w-10 h-10 rounded-xl bg-mining/15 border border-mining/30 flex items-center justify-center text-mining hover:bg-mining hover:text-white transition-all duration-300"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+          <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+        </svg>
+      </a>
     </div>
   </div>
 );
 
 const QuickLinks = () => (
-  <div className="md:col-span-3">
+  <div>
     <h4 className="font-semibold text-foreground mb-5">Quick Links</h4>
     <nav className="flex flex-col gap-y-3 text-[15px]" aria-label="Quick links">
       {QUICK_LINKS.map(({ href, label }) => (
         <Link
           key={href}
           href={href}
-          className="hover:text-primary transition-colors"
+          className="hover:text-floriculture transition-colors"
         >
           {label}
         </Link>
@@ -89,7 +116,7 @@ const ContactSection = () => {
   const renderContactValue = (info: ContactInfo): ReactNode => {
     if (info.href) {
       return (
-        <a href={info.href} className="hover:text-primary transition-colors">
+        <a href={info.href} className="hover:text-mining transition-colors">
           {info.value}
         </a>
       );
@@ -101,7 +128,7 @@ const ContactSection = () => {
   };
 
   return (
-    <div className="md:col-span-4">
+    <div>
       <h4 className="font-semibold text-foreground mb-5">Get In Touch</h4>
 
       <div className="space-y-5 text-[15px]">
@@ -127,9 +154,10 @@ const CopyrightBar = () => (
 // Main Component
 export default function Footer() {
   return (
-    <footer className="border-t bg-background mt-auto">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
+    <footer className="border-t bg-background mt-auto relative">
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-floriculture via-mining to-corporate" />
+      <div className="mx-auto max-w-7xl px-6 py-12 md:py-16 mt-2">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
           <BrandSection />
           <QuickLinks />
           <ContactSection />

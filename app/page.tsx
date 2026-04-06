@@ -9,13 +9,11 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {" "}
-      {/* This is important */}
       <Navbar />
       <main className="flex-grow">
         {" "}
-  
         <Hero />
-        <SectorsGrid showHeading={false} />
+        <SectorsGrid showHeading={true} />
         <AboutPreview />
       </main>
       <Footer />

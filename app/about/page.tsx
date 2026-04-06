@@ -44,16 +44,17 @@ export default function AboutPage() {
       <Navbar />
 
       {/* 🌈 Background */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 via-accent/10 to-yellow-400/10 blur-3xl" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-floriculture/20 via-background to-mining/20 blur-[120px] opacity-70 animate-pulse delay-75" />
 
       <main className="flex-grow pt-28 pb-20">
         <div className="mx-auto max-w-6xl px-6">
           {/* HERO */}
           <div className="text-center max-w-3xl mx-auto mb-20">
             <motion.h1
-              className="text-5xl md:text-6xl font-bold"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-floriculture via-mining to-corporate drop-shadow-sm pb-2"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
             >
               About Semeda Trading
             </motion.h1>
@@ -64,8 +65,7 @@ export default function AboutPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              We operate across floriculture, mining, import, and export —
-              blending Ethiopian strength with global opportunity.
+              Semeda Trading PLC is engaged in floriculture development, mining, import, and export. Based in Addis Ababa, Bole, the company is committed to delivering quality, reliability, and sustainable business practices across all sectors.
             </motion.p>
           </div>
 
@@ -86,10 +86,10 @@ export default function AboutPage() {
                   whileHover={{ scale: 1.05 }}
                 >
                   {/* Glow */}
-                  <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-accent/20 via-primary/20 to-yellow-400/20" />
+                  <div className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition duration-700 bg-gradient-to-br from-floriculture/20 via-transparent to-mining/20" />
 
                   {/* Number */}
-                  <div className="absolute -top-4 -right-4 h-10 w-10 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                  <div className="absolute -top-4 -right-4 h-12 w-12 rounded-2xl bg-gradient-to-br from-floriculture to-mining text-white flex items-center justify-center font-bold text-lg shadow-lg">
                     {String(i + 1).padStart(2, "0")}
                   </div>
 

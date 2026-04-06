@@ -11,44 +11,70 @@ export default function FloriculturePage() {
 
       <main className="flex-grow pt-28 pb-10">
         <section className="mx-auto max-w-6xl px-6">
-          {/* Theme Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 rounded-full text-sm font-medium mb-6">
+          <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-floriculture to-mining drop-shadow-sm pb-4">
+            Floriculture Development
+          </h1>
+          <div className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-floriculture/20 to-mining/20 text-floriculture rounded-full text-sm font-extrabold tracking-wide shadow-sm border border-floriculture/30">
             🌱 Sustainable Growth
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-emerald-950 dark:text-emerald-50">
-            Floriculture Development
-          </h1>
-
-          <p className="mt-6 text-xl text-muted-foreground max-w-3xl">
+          <p className="mt-6 text-xl text-muted-foreground max-w-3xl font-medium">
             We specialize in sustainable flower cultivation, focusing on
             high-quality production for both local and international markets.
           </p>
 
-          <div className="relative mt-12 h-[420px] rounded-3xl overflow-hidden shadow-xl border border-emerald-200 dark:border-emerald-900">
-            <Image
-              src="/images/floriculture.jpg"
-              alt="Floriculture"
-              fill
-              sizes="(max-width: 768px) 100vw, 50vw"
-              loading="eager"
-              priority
-              className="object-cover"
-            />
+{/* Image Gallery */}
+          <div className="mt-16">
+            <h2 className="text-3xl font-extrabold text-foreground mb-8">
+              Gallery
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[
+                "/images/gallery/floriculture-1.png",
+                "/images/gallery/floriculture-2.png",
+                "/images/gallery/floriculture-3.png",
+              ].map((src, i) => (
+                <div
+                  key={src}
+                  className="relative h-64 rounded-2xl overflow-hidden shadow-lg group border-2 border-floriculture/20"
+                >
+                  <Image
+                    src={src}
+                    alt={`Floriculture gallery ${i + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              ))}
+            </div>
           </div>
 
           <SectorContent
+            accentColor="floriculture"
             leftTitle="What We Do"
             leftContent={
-              <ul className="space-y-2 text-sm text-muted-foreground list-disc list-inside">
-                <li>Greenhouse flower production</li>
-                <li>Export-quality flower processing</li>
-                <li>Sustainable farming techniques</li>
+              <ul className="space-y-4">
+                {[
+                  "Greenhouse flower production",
+                  "Export-quality flower processing",
+                  "Sustainable farming techniques",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-5 w-5 rounded-full bg-floriculture/20 border border-floriculture/40 flex items-center justify-center shrink-0">
+                      <span className="h-2 w-2 rounded-full bg-floriculture" />
+                    </span>
+                    <span className="text-base text-foreground/75 font-medium">
+                      {item}
+                    </span>
+                  </li>
+                ))}
               </ul>
             }
             rightTitle="Our Approach"
             rightContent={
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-foreground/75 leading-8 font-medium">
                 We combine modern agricultural practices with sustainability to
                 ensure consistent quality and environmental responsibility.
               </p>

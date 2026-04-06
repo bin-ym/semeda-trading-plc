@@ -60,7 +60,7 @@ export default function Navbar() {
 
             <SheetContent
               side="right"
-              className="flex flex-col gap-6 pt-10 text-lg font-semibold"
+              className="flex flex-col gap-6 pt-10 text-center text-lg font-semibold"
             >
               {["Home", "About", "Sectors", "Contact"].map((label) => (
                 <Link

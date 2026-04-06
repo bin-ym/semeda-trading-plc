@@ -38,15 +38,6 @@ export default function SectorsPage() {
       <main className="flex-grow pt-2">
         {/* Hero Section */}
         <section className="mx-auto max-w-6xl px-6 text-center py-24">
-          {/* Eyebrow
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-floriculture/15 to-mining/15 border border-floriculture/30 text-floriculture text-sm font-bold tracking-widest uppercase rounded-full mb-8 shadow-sm"
-          >
-            🌍 Semeda Trading PLC
-          </motion.div> */}
 
           <motion.h1
             initial={{ opacity: 0, y: 40 }}

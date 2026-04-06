@@ -68,8 +68,26 @@ export default function SectorsGrid({
       <div className="mx-auto max-w-7xl px-6">
         {showHeading && (
           <div className="text-center mb-16">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-floriculture via-mining to-corporate"
+            >
+              Our Business Sectors
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-4 text-lg text-muted-foreground"
+            >
+              Discover the industries where we deliver excellence
+            </motion.p>
             {/* Animated pill badges */}
-            <div className="flex justify-center gap-3 flex-wrap mb-6">
+            <div className="flex justify-center gap-3 pt-4 flex-wrap mb-6">
               {[
                 {
                   label: "🌱 Floriculture",
@@ -103,27 +121,6 @@ export default function SectorsGrid({
                 </motion.span>
               ))}
             </div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-floriculture via-mining to-corporate"
-            >
-              Our Business Sectors
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-4 text-lg text-muted-foreground"
-            >
-              Discover the industries where we deliver excellence
-            </motion.p>
-
             {/* Animated divider */}
             <motion.div
               initial={{ scaleX: 0 }}

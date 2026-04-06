@@ -45,7 +45,7 @@ export default function AboutPreview() {
         >
           {/* Image */}
           <Image
-            src="/images/logo.png"
+            src="/images/Logo.png"
             alt="About Semeda Trading"
             fill
             className="object-cover transition-transform duration-700 group-hover:scale-110"

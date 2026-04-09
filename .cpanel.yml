@@ -1,5 +1,8 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/username/public_html
-    - /bin/cp -R * $DEPLOYPATH
+    - export DEPLOYPATH=/home/semedasf/public_html/semeda
+    - /usr/bin/rsync -av --delete ./ $DEPLOYPATH
+    - cd $DEPLOYPATH && npm install --production
+    - cd $DEPLOYPATH && npm run build
+    - /usr/local/bin/ea-passenger-restart-app /home/semedasf/public_html/semeda

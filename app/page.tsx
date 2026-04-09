@@ -8,10 +8,8 @@ import Footer from "@/components/layout/footer";
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      {" "}
       <Navbar />
       <main className="flex-grow">
-        {" "}
         <Hero />
         <SectorsGrid showHeading={true} />
         <AboutPreview />

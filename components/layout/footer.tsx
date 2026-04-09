@@ -4,19 +4,24 @@ import { ReactNode } from "react";
 import { Send } from "lucide-react";
 
 // Types
+type ContactType = "email" | "phone" | "address";
+
 interface FooterLink {
   href: string;
   label: string;
 }
 
 interface ContactInfo {
-  type: "email" | "phone" | "address";
+  type: ContactType;
   label: string;
   value: string;
+  value2?: string;
   href?: string;
 }
 
 // Constants
+const COMPANY_NAME = "Semeda Trading PLC";
+
 const QUICK_LINKS: FooterLink[] = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
@@ -34,8 +39,9 @@ const CONTACT_INFO: ContactInfo[] = [
   {
     type: "phone",
     label: "Phone",
-    value: "+251 911 234 567",
-    href: "tel:+251911234567",
+    value: "+251 911 678 896",
+    value2: "+251 912 094 883",
+    href: "tel:+251911678896",
   },
   {
     type: "address",
@@ -64,15 +70,20 @@ const BrandSection = () => (
     {/* Social Links */}
     <div className="mt-6 flex items-center gap-3">
       <a
-        href="#"
-        aria-label="Telegram"
+        href="https://t.me/yourcompany"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit our Telegram"
         className="group w-10 h-10 rounded-xl bg-floriculture/15 border border-floriculture/30 flex items-center justify-center text-floriculture hover:bg-floriculture hover:text-white transition-all duration-300"
       >
         <Send className="w-4 h-4" />
       </a>
+
       <a
-        href="#"
-        aria-label="Instagram"
+        href="https://instagram.com/yourcompany"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit our Instagram"
         className="group w-10 h-10 rounded-xl bg-mining/15 border border-mining/30 flex items-center justify-center text-mining hover:bg-mining hover:text-white transition-all duration-300"
       >
         <svg
@@ -103,7 +114,7 @@ const QuickLinks = () => (
         <Link
           key={href}
           href={href}
-          className="hover:text-floriculture transition-colors"
+          className="hover:text-floriculture transition-colors duration-200"
         >
           {label}
         </Link>
@@ -116,14 +127,30 @@ const ContactSection = () => {
   const renderContactValue = (info: ContactInfo): ReactNode => {
     if (info.href) {
       return (
-        <a href={info.href} className="hover:text-mining transition-colors">
-          {info.value}
-        </a>
+        <div className="flex flex-col space-y-1">
+          <a
+            href={info.href}
+            className="hover:text-mining transition-colors"
+          >
+            {info.value}
+          </a>
+
+          {info.value2 && (
+            <a
+              href={`tel:${info.value2.replace(/\s/g, "")}`}
+              className="hover:text-mining transition-colors"
+            >
+              {info.value2}
+            </a>
+          )}
+        </div>
       );
     }
 
     return (
-      <p className="text-muted-foreground whitespace-pre-line">{info.value}</p>
+      <p className="text-muted-foreground whitespace-pre-line">
+        {info.value}
+      </p>
     );
   };
 
@@ -147,7 +174,7 @@ const ContactSection = () => {
 
 const CopyrightBar = () => (
   <div className="border-t py-6 text-center text-xs text-muted-foreground bg-background/80">
-    © {new Date().getFullYear()} Semeda Trading PLC. All rights reserved.
+    © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
   </div>
 );
 
@@ -155,14 +182,17 @@ const CopyrightBar = () => (
 export default function Footer() {
   return (
     <footer className="border-t bg-background mt-auto relative">
+      {/* Top gradient line */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-floriculture via-mining to-corporate" />
+
       <div className="mx-auto max-w-7xl px-6 py-12 md:py-16 mt-2">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 md:gap-12">
           <BrandSection />
           <QuickLinks />
           <ContactSection />
         </div>
       </div>
+
       <CopyrightBar />
     </footer>
   );

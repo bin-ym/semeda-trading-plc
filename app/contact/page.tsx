@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { Input } from "@/components/ui/input";
@@ -19,7 +20,8 @@ const contactItems = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+251 911 234 567",
+    value: "+251 911 678 896",
+    value2: "+251 912 094 883",
     color: "text-mining",
     bg: "bg-mining/15 border-mining/30",
   },
@@ -33,11 +35,24 @@ const contactItems = [
 ];
 
 export default function ContactPage() {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    // TODO: connect to backend / API
+    await new Promise((res) => setTimeout(res, 1500));
+
+    setLoading(false);
+    alert("Message sent successfully!");
+  };
+
   return (
     <div className="flex flex-col min-h-screen relative overflow-hidden">
       <Navbar />
 
-      {/* Glowing background orbs */}
+      {/* Background */}
       <div className="fixed inset-0 -z-10 pointer-events-none">
         <motion.div
           animate={{ scale: [1, 1.2, 1], rotate: [0, 80, 0] }}
@@ -53,150 +68,106 @@ export default function ContactPage() {
 
       <main className="flex-grow pt-22 pb-20">
         <div className="mx-auto max-w-7xl px-6">
-          {/* Hero Header */}
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             className="text-center mb-16"
           >
-            {/* <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-floriculture/15 to-mining/15 border border-floriculture/30 text-floriculture text-sm font-bold tracking-widest uppercase rounded-full mb-6 shadow-sm"
-            >
-              📬 Get In Touch
-            </motion.div> */}
-
             <h1 className="text-5xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-floriculture via-mining to-corporate mb-4 pb-1">
               Contact Us
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We&apos;d love to hear from you. Reach out using the form below or
-              connect directly.
+              We’d love to hear from you. Reach out using the form below or connect directly.
             </p>
-
-            {/* Animated divider */}
-            <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="mt-6 h-1 w-32 mx-auto rounded-full bg-gradient-to-r from-floriculture via-mining to-corporate origin-left"
-            />
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Contact Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* FORM */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative overflow-hidden bg-card p-8 rounded-3xl shadow-lg border"
+              className="bg-card p-8 rounded-3xl shadow-lg border"
             >
-              {/* Top accent */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-floriculture via-mining to-corporate" />
+              <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
 
-              <h2 className="text-2xl font-extrabold tracking-tight mb-2">
-                Send us a Message
-              </h2>
-              <p className="text-sm text-muted-foreground mb-8">
-                We&apos;ll respond within 24 hours.
-              </p>
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <Input placeholder="First Name" required />
+                  <Input placeholder="Last Name" required />
+                </div>
 
-              <form className="space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="space-y-1.5">
-                    <label className="text-sm font-semibold tracking-wide uppercase text-foreground/70">
-                      First Name
-                    </label>
-                    <Input
-                      placeholder="John"
-                      className="focus:border-floriculture focus:ring-floriculture/30"
-                    />
-                  </div>
-                  <div className="space-y-1.5">
-                    <label className="text-sm font-semibold tracking-wide uppercase text-foreground/70">
-                      Last Name
-                    </label>
-                    <Input
-                      placeholder="Doe"
-                      className="focus:border-floriculture focus:ring-floriculture/30"
-                    />
-                  </div>
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-semibold tracking-wide uppercase text-foreground/70">
-                    Email Address
-                  </label>
-                  <Input
-                    type="email"
-                    placeholder="john@example.com"
-                    className="focus:border-mining focus:ring-mining/30"
-                  />
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-sm font-semibold tracking-wide uppercase text-foreground/70">
-                    Message
-                  </label>
-                  <Textarea
-                    placeholder="How can we help you?"
-                    className="min-h-[150px] focus:border-floriculture focus:ring-floriculture/30"
-                  />
-                </div>
-                <Button className="w-full text-base h-12 bg-gradient-to-r from-floriculture to-mining text-white border-0 font-bold hover:opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-md">
-                  Send Message
+                <Input type="email" placeholder="Email Address" required />
+
+                <Textarea
+                  placeholder="Your message..."
+                  className="min-h-[150px]"
+                  required
+                />
+
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full h-12 bg-gradient-to-r from-floriculture to-mining text-white font-bold"
+                >
+                  {loading ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </motion.div>
 
-            {/* Info Column */}
+            {/* INFO */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
               className="space-y-6"
             >
               {/* Map */}
-              <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-floriculture/20 ring-4 ring-floriculture/10 h-[280px] relative">
+              <div className="rounded-3xl overflow-hidden h-[280px] border">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126115.11526844975!2d38.69466380126757!3d8.963495815152864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b85cef5ab402d%3A0x8467b6b037a24d49!2sAddis%20Ababa%2C%20Ethiopia!5e0!3m2!1sen!2sus!4v1703110292723!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  className="absolute inset-0"
+                  src="https://www.google.com/maps?q=Addis+Ababa&output=embed"
+                  className="w-full h-full"
                 />
               </div>
 
               {/* Contact Cards */}
-              <div className="space-y-4">
-                {contactItems.map((item, i) => (
-                  <motion.div
-                    key={item.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 + i * 0.1 }}
-                    className={`flex items-center gap-5 p-5 rounded-2xl border ${item.bg} transition-all duration-300 hover:shadow-md hover:-translate-y-0.5`}
-                  >
-                    <div
-                      className={`h-12 w-12 rounded-2xl flex items-center justify-center shrink-0 bg-white/60 dark:bg-black/30 shadow-sm`}
-                    >
-                      <item.icon className={`w-6 h-6 ${item.color}`} />
-                    </div>
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-0.5">
-                        {item.label}
-                      </p>
-                      <p className={`font-semibold text-base ${item.color}`}>
+              {contactItems.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1 }}
+                  className={`p-5 rounded-2xl border flex gap-4 items-center ${item.bg}`}
+                >
+                  <item.icon className={`w-6 h-6 ${item.color}`} />
+
+                  <div>
+                    <p className="text-xs uppercase text-muted-foreground">
+                      {item.label}
+                    </p>
+
+                    {/* Clickable logic */}
+                    {item.label === "Phone" ? (
+                      <div className="flex flex-col">
+                        <a href="tel:+251911678896" className="font-semibold">
+                          {item.value}
+                        </a>
+                        <a href="tel:+251912094883" className="font-semibold">
+                          {item.value2}
+                        </a>
+                      </div>
+                    ) : item.label === "Email" ? (
+                      <a
+                        href={`mailto:${item.value}`}
+                        className="font-semibold"
+                      >
                         {item.value}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+                      </a>
+                    ) : (
+                      <p className="font-semibold">{item.value}</p>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
         </div>
